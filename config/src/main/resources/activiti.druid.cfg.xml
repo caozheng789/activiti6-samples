@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!--<bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">-->
+    <!--<property name="jdbcUrl" value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000;MVCC=TRUE" />-->
+    <!--<property name="jdbcDriver" value="org.h2.Driver" />-->
+    <!--<property name="jdbcUsername" value="sa" />-->
+    <!--<property name="jdbcPassword" value="" />-->
+  <!--</bean>-->
+
+  <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+    <property name="dataSource" ref="dataSource"/>
+    <!-- 创建时候更新 -->
+    <property name="databaseSchemaUpdate" value="true" />
+    <!--是否使用历史数据-->
+    <property name="dbHistoryUsed" value="true" />
+    <!--是否使用身份数据-->
+    <property name="dbIdentityUsed" value="true" />
+    <!--设置表头结构-->
+    <!--<property name="databaseTablePrefix" value="t_"/>-->
+  </bean>
+
+
+<!--durid.链接方式-->
+  <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+    <property name="url" value="jdbc:mysql://localhost:3306/activiti6?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" />
+    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+    <property name="username" value="root" />
+    <property name="password" value="123456" />
+    <property name="initialSize" value="1"/>
+    <property name="maxActive" value="10"/>
+    <property name="filters" value="stat,slf4j"/>
+  </bean>
+</beans>
