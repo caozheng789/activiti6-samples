@@ -6,11 +6,12 @@
         <artifactId>activiti6-samples</artifactId>
         <groupId>com.bulin</groupId>
         <version>1.0-SNAPSHOT</version>
-
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>config</artifactId>
+    <artifactId>coreapi</artifactId>
+
+
 
 
 </project>
